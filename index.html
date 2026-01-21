@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>MYWEBSITE.COM</title>
+</head>
+<body>
+    <a id="top"></a>
+    <header class="header">
+        <h1 class="header__title">Welcome to My Page</h1>
+        <p class="header__subtitle">I'm Darren Knuckles, a hands-on professional whose path from aerospace and automotive manufacturing led to building my own entrepreneurial venture.</p>
+        <ul class="header__nav">
+          <li class="nav-item">
+            <details class="nav-item__box">
+              <summary class="nav-item__trigger">About Me</summary>
+              <div class="nav-item__content">
+                <p style="color: rgb(211, 203, 203);">Hello!! My name is Darren Knuckles, a skilled professional with diverse experience spanning aerospace manufacturing, automotive operations, and entrepreneurship. Originally from rural Missouri, I built my foundation through hands-on work before pursuing formal technical education at ITT Tech in Wichita, Kansas.</p>
+                <p style="color: rgb(218, 218, 223);">My career began at Cessna Aircraft, where I contributed to high-precision manufacturing. Following the 2008 recession, I relocated to Chattanooga, Tennessee, where I gained valuable operations and management experience as a CPP Manager/Technician (Paint Shop), at Volkswagen Auto Manufacturing. Seeking greater autonomy and entrepreneurial challenges, I transitioned to establishing Paint Chattanooga, applying my technical expertise and leadership skills to build a successful independent business.</p>
+              </div>
+            </details>
+          </li>
+          <li class="nav-item">
+            <details class="nav-item__box">
+              <summary class="nav-item__trigger">Projects</summary>
+              <div class="nav-item__content">
+                <p><a href="https://frontendsimplified.com/" target="_blank" style="color: rgb(201, 201, 211)">Project</a></p>
+                <p><a href="https://www.trustpilot.com/review/frontendsimplified.com" target="_blank" style="color: rgb(201, 201, 211);">Reviews</a></p>
+              </div>
+            </details>
+          </li>
+          <li class="nav-item">
+            <details class="nav-item__box">
+              <summary class="nav-item__trigger">Contact</summary>
+              <div class="nav-item__content">
+                <p>Email: <a href="mailto:dlk.ilfaba@gmail.com" target="_blank" style="color: #E0A800;"Email>dlk.ilfaba@gmail.com</a></p>
+                <p>Phone: +4237492601"</p>
+              </div>
+            </details>
+          </li>
+        </ul>
+
+        <style>
+            .header__title { color: #e6edf5; text-align: center; }
+            .header__subtitle { font-size: 18px; color: #e6edf5; text-align: center; }
+
+            .header__nav { list-style: none; padding: 0; text-align: center; }
+            .nav-item { display: inline-block; margin: 10px; vertical-align: top; position: relative; z-index: 10; }
+
+            /* Navigation item box styling */
+            .nav-item__box {
+                background: #E0A800;
+                border-radius: 8px;
+                box-shadow: 0 0 5px rgba(252, 247, 247, 0.1);
+                width: 180px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-item__trigger {
+                list-style: none;
+                cursor: pointer;
+                padding: 12px 16px;
+                display: block;
+                font-weight: 600;
+                opacity: 1;
+                transition: opacity 0.3s ease;
+            }
+
+            .nav-item__content {
+                padding: 12px 15px 18px 15px;
+                text-align: center;
+                background: #243b55;
+                border-radius: 0 0 8px 8px;
+                opacity: 1;
+                transition: opacity 0.3s ease;
+                word-wrap: break-word;
+                white-space: normal;
+            }
+
+            .nav-item__content p {
+                margin: 8px 0;
+            }
+
+            /* Glow when plane passes (synced to 8s plane loop) */
+            @keyframes glow {
+              0%, 24% { box-shadow: 0 0 6px rgba(255,255,255,0.12); }
+              24.5%, 25% { box-shadow: 0 0 40px rgba(255,255,255,1); }
+              25.5%, 100% { box-shadow: 0 0 6px rgba(255,255,255,0.12); }
+            }
+
+            /* Glow when plane passes over each button */
+            .nav-item:nth-child(1) .nav-item__box { animation: glow 8s linear infinite; animation-delay: -7.2s; }
+            .nav-item:nth-child(2) .nav-item__box { animation: glow 8s linear infinite; animation-delay: -6.2s; }
+            .nav-item:nth-child(3) .nav-item__box { animation: glow 8s linear infinite; animation-delay: -5.2s; }
+
+            .nav-item__trigger::-webkit-details-marker { display: none; }
+
+            /* when closed, keep the box compact */
+            .nav-item__box:not([open]) .nav-item__content { display: none; }
+
+            /* small responsive tweak */
+            @media (max-width: 600px) { .nav-item__box { width: 100%; } }
+        </style>
+    </header>
+    <main>
+      <div class="airplane airplane--active">
+        <svg class="airplane__plane" width="520" height="60" viewBox="-400 0 520 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Rope from back of plane to front of banner -->
+          <line x1="10" y1="30" x2="-250" y2="30" stroke="#667" stroke-width="2" stroke-dasharray="2,2"/>
+          <!-- Fuselage (main body) -->
+          <ellipse cx="50" cy="30" rx="35" ry="10" fill="#f0f0f0" stroke="#999" stroke-width="1"/>
+          <!-- Warning light on top of plane -->
+          <circle cx="50" cy="18" r="2" fill="#ff0000" class="airplane__warning-light" stroke="#cc0000" stroke-width="0.5"/>
+          <!-- Cockpit window -->
+          <circle cx="80" cy="29" r="2.5" fill="#4da6ff" stroke="#333" stroke-width="0.5"/>
+          <!-- Cabin windows -->
+          <circle cx="65" cy="27" r="1.5" fill="#4da6ff" stroke="#333" stroke-width="0.5"/>
+          <circle cx="58" cy="27" r="1.5" fill="#4da6ff" stroke="#333" stroke-width="0.5"/>
+          <circle cx="51" cy="27" r="1.5" fill="#4da6ff" stroke="#333" stroke-width="0.5"/>
+          <circle cx="44" cy="27" r="1.5" fill="#4da6ff" stroke="#333" stroke-width="0.5"/>
+          <!-- Door -->
+          <rect x="37" y="26" width="5" height="8" fill="#ddd" stroke="#999" stroke-width="0.5"/>
+          <!-- Left wing -->
+          <path d="M 50 35 L 5 40 L 8 37 L 50 34" fill="#e6e6e6" stroke="#999" stroke-width="1"/>
+          <!-- Right wing (same) -->
+          <path d="M 50 35 L 5 40 L 8 37 L 50 34" fill="#e6e6e6" stroke="#999" stroke-width="1"/>
+          <!-- Tail wing (horizontal stabilizer) -->
+          <path d="M 20 33 L 8 35 L 10 33 L 20 31" fill="#e6e6e6" stroke="#999" stroke-width="1"/>
+          <!-- Vertical stabilizer (tail fin) -->
+          <polygon points="15,30 10,24 11,30" fill="#f0f0f0" stroke="#999" stroke-width="1"/>
+          <!-- Landing gear -->
+          <line x1="55" y1="40" x2="55" y2="45" stroke="#333" stroke-width="1"/>
+          <circle cx="55" cy="46" r="2" fill="#333"/>
+          <line x1="42" y1="40" x2="42" y2="45" stroke="#333" stroke-width="1"/>
+          <circle cx="42" cy="46" r="2" fill="#333"/>
+        </svg>
+        <!-- Banner trailing behind plane -->
+        <div class="airplane__banner">
+          <svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+            <!-- Rope from plane to banner -->
+            <line x1="195" y1="15" x2="155" y2="15" stroke="#666" stroke-width="1" stroke-dasharray="2,2"/>
+            <!-- Banner background with wave effect -->
+            <path d="M 40 5 Q 80 8, 120 5 Q 160 2, 195 5 L 195 35 Q 160 38, 120 35 Q 80 32, 40 35 Z" 
+                  fill="#ff4444" stroke="#cc0000" stroke-width="1.5"/>
+            <!-- Banner text -->
+            <text x="117" y="25" font-family="Arial, sans-serif" font-size="14" font-weight="bold" 
+                  fill="white" text-anchor="middle">WEB DEVELOPER</text>
+          </svg>
+        </div>
+      </div>
+    </main>
+    <div class="profile-card">
+      <div class="profile-card__media">
+        <img class="profile-card__image" src="images/86b89ade-5c05-4dc3-b53c-0c6539747afa-md-removebg-preview.png" alt="Darren Knuckles">
+      </div>
+      <div class="profile-card__overlay">
+        <div class="profile-card__info">
+          <h2>Darren Knuckles</h2>
+          <p class="role">Frontend Web Developer</p>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      @keyframes flyAcross {
+        from {
+          left: -120px;
+          top: 80px;
+          opacity: 0;
+        }
+        8% { opacity: 1; }
+        92% { opacity: 1; }
+        to {
+          left: 100vw;
+          top: 80px;
+          opacity: 0;
+        }
+      }
+
+      .airplane {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        z-index: 5;
+        animation: flyAcross 8s linear infinite;
+        pointer-events: none;
+      }
+
+      .airplane__plane {
+        /* SVG styling inherits from parent */
+      }
+
+      .airplane__banner {
+        position: absolute;
+        left: 110px;
+        top: 15px;
+        animation: bannerWave 0.5s ease-in-out infinite alternate;
+      }
+
+      @keyframes blinkingLight {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0.2; }
+      }
+
+      .airplane__warning-light {
+        animation: blinkingLight 0.6s infinite;
+      }
+
+      @keyframes bannerWave {
+        from { transform: translateY(-2px); }
+        to { transform: translateY(2px); }
+      }
+
+      @keyframes starfield {
+        from { background-size: 200px 200px; }
+        to { background-size: 400px 400px; }
+      }
+
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #0a0e27;
+        background-image: 
+          radial-gradient(1px 1px at 20% 30%, white, rgba(0,0,0,0)),
+          radial-gradient(1px 1px at 60% 70%, #fff, rgba(0,0,0,0)),
+          radial-gradient(0.5px 0.5px at 50% 50%, #ddd, rgba(0,0,0,0)),
+          radial-gradient(1.5px 1.5px at 80% 10%, white, rgba(0,0,0,0)),
+          radial-gradient(1px 1px at 90% 60%, #eee, rgba(0,0,0,0));
+        background-size: 200px 200px;
+        background-repeat: repeat;
+        background-position: center;
+        animation: starfield 3s linear infinite;
+        text-align: center;
+        padding: 50px;
+      }
+
+      .profile-card {
+        width: 500px;
+        max-width: 96%;
+        margin: 36px auto;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        background: #fff;
+        border: none;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      .profile-card__media {
+        position: relative;
+        height: 700px;
+        background: linear-gradient(180deg,#243b55 0%, #243b55 60%);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 60px;
+        overflow: visible;
+      }
+
+      .profile-card__image {
+        width: auto;
+        height: 670px;
+        object-fit: contain;
+        object-position: center bottom;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      /* ensure overlay floats above the photo */
+      .profile-card__overlay {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 32px;
+        width: 88%;
+        background:white (255, 255, 255, 0.25);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 16px;
+        padding: 20px 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        z-index: 3;
+      }
+
+      .profile-card__info h2 {
+        margin: 0 0 6px 0;
+        font-size: 24px;
+        font-weight: 700;
+        color: #1a1a1a;
+        text-align: left;
+      }
+
+      .profile-card__info .role {
+        margin: 0;
+        font-size: 15px;
+        color: #000000;
+        opacity: 0.9;
+        text-align: left;
+      }
+
+      .chip {
+        background: #5b46ff;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        white-space: nowrap;
+        
+      }
+
+      @media (max-width: 520px) {
+        .profile-media { height: 240px; background-size: cover, 90%; background-position: center, center 22%; }
+        .profile-overlay { width: 92%; flex-direction: column; align-items: flex-start; }
+        .chip { align-self: stretch; text-align: center; }
+      }
+
+      /* Poster card block */
+      .poster {
+        background-color: #243b55;
+        border-radius: 12px;
+        padding: 40px;
+        width: 500px;
+        margin: 50px auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 100;
+      }
+
+      .poster__title {
+        font-size: 28px;
+        color: #0c0c0c;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .poster__subtitle {
+        font-size: 18px;
+        color: #0f0f0f;
+        font-style: italic;
+      }
+    </style>
+
+    <!-- Poster quote section -->
+    <div class="poster">
+      <h1 class="poster__title"><b>"Talk is cheap. Show me the code"</b></h1>
+      <p class="poster__subtitle">Frontend Simplified</p>
+    </div>
+    
+</body>
+</html>
+
