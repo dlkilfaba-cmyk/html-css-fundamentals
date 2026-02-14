@@ -1,0 +1,341 @@
+/* ========================================
+   CSS Stylesheet for MYWEBSITE.COM
+   Author: Darren Knuckles
+   ======================================== */
+
+/* ========================================
+   Base Styles
+   ======================================== */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0a0e27;
+  background-image: 
+    radial-gradient(1px 1px at 20% 30%, white, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 60% 70%, #fff, rgba(0,0,0,0)),
+    radial-gradient(0.5px 0.5px at 50% 50%, #ddd, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 80% 10%, white, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90% 60%, #eee, rgba(0,0,0,0));
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  background-position: center;
+  animation: starfield 3s linear infinite;
+  text-align: center;
+  padding: 50px;
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+
+@keyframes starfield {
+  from { background-size: 200px 200px; }
+  to { background-size: 400px 400px; }
+}
+
+@keyframes flyAcross {
+  from {
+    left: -120px;
+    top: 80px;
+    opacity: 0;
+  }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  to {
+    left: 100vw;
+    top: 80px;
+    opacity: 0;
+  }
+}
+
+@keyframes blinkingLight {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.2; }
+}
+
+@keyframes bannerWave {
+  from { transform: translateY(-2px); }
+  to { transform: translateY(2px); }
+}
+
+@keyframes glow {
+  0%, 24% { box-shadow: 0 0 6px rgba(255,255,255,0.12); }
+  24.5%, 25% { box-shadow: 0 0 40px rgba(255,255,255,1); }
+  25.5%, 100% { box-shadow: 0 0 6px rgba(255,255,255,0.12); }
+}
+
+/* ========================================
+   Header Styles
+   ======================================== */
+
+.header__title {
+  color: #e6edf5;
+  text-align: center;
+}
+
+.header__subtitle {
+  font-size: 18px;
+  color: #e6edf5;
+  text-align: center;
+}
+
+/* ========================================
+   Navigation Styles
+   ======================================== */
+
+.header__nav {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.nav-item {
+  display: inline-block;
+  margin: 10px;
+  vertical-align: top;
+  position: relative;
+  z-index: 10;
+}
+
+/* Navigation item box styling */
+.nav-item__box {
+  background: #E0A800;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(252, 247, 247, 0.1);
+  width: 180px;
+  transition: all 0.3s ease;
+}
+
+.nav-item__trigger {
+  list-style: none;
+  cursor: pointer;
+  padding: 12px 16px;
+  display: block;
+  font-weight: 600;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.nav-item__content {
+  padding: 12px 15px 18px 15px;
+  text-align: center;
+  background: #243b55;
+  border-radius: 0 0 8px 8px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.nav-item__content p {
+  margin: 8px 0;
+}
+
+/* Glow when plane passes over each button */
+.nav-item:nth-child(1) .nav-item__box {
+  animation: glow 8s linear infinite;
+  animation-delay: -7.2s;
+}
+
+.nav-item:nth-child(2) .nav-item__box {
+  animation: glow 8s linear infinite;
+  animation-delay: -6.2s;
+}
+
+.nav-item:nth-child(3) .nav-item__box {
+  animation: glow 8s linear infinite;
+  animation-delay: -5.2s;
+}
+
+.nav-item__trigger::-webkit-details-marker {
+  display: none;
+}
+
+/* When closed, keep the box compact */
+.nav-item__box:not([open]) .nav-item__content {
+  display: none;
+}
+
+/* Navigation content text colors */
+.nav-item__content .text-light {
+  color: rgb(211, 203, 203);
+}
+
+.nav-item__content .text-lighter {
+  color: rgb(218, 218, 223);
+}
+
+.nav-item__content .link-light {
+  color: rgb(201, 201, 211);
+}
+
+.nav-item__content .link-gold {
+  color: #E0A800;
+}
+
+/* ========================================
+   Airplane Animation
+   ======================================== */
+
+.airplane {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  z-index: 5;
+  animation: flyAcross 8s linear infinite;
+  pointer-events: none;
+}
+
+.airplane__plane {
+  /* SVG styling inherits from parent */
+}
+
+.airplane__banner {
+  position: absolute;
+  left: 110px;
+  top: 15px;
+  animation: bannerWave 0.5s ease-in-out infinite alternate;
+}
+
+.airplane__warning-light {
+  animation: blinkingLight 0.6s infinite;
+}
+
+/* ========================================
+   Profile Card
+   ======================================== */
+
+.profile-card {
+  width: 500px;
+  max-width: 96%;
+  margin: 36px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  border: none;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.profile-card__media {
+  position: relative;
+  height: 700px;
+  background: linear-gradient(180deg,#243b55 0%, #243b55 60%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 60px;
+  overflow: visible;
+}
+
+.profile-card__image {
+  width: auto;
+  height: 670px;
+  object-fit: contain;
+  object-position: center bottom;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Ensure overlay floats above the photo */
+.profile-card__overlay {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 32px;
+  width: 88%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  z-index: 3;
+}
+
+.profile-card__info h2 {
+  margin: 0 0 6px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: left;
+}
+
+.profile-card__info .role {
+  margin: 0;
+  font-size: 15px;
+  color: #000000;
+  opacity: 0.9;
+  text-align: left;
+}
+
+.chip {
+  background: #5b46ff;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* ========================================
+   Poster Card
+   ======================================== */
+
+.poster {
+  background-color: #243b55;
+  border-radius: 12px;
+  padding: 40px;
+  width: 500px;
+  margin: 50px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 100;
+}
+
+.poster__title {
+  font-size: 28px;
+  color: #0c0c0c;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.poster__subtitle {
+  font-size: 18px;
+  color: #0f0f0f;
+  font-style: italic;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 600px) {
+  .nav-item__box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .profile-media {
+    height: 240px;
+    background-size: cover, 90%;
+    background-position: center, center 22%;
+  }
+
+  .profile-overlay {
+    width: 92%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chip {
+    align-self: stretch;
+    text-align: center;
+  }
+}
